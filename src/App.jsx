@@ -6,6 +6,7 @@ export default function App() {
   const [length, setLength] = useState(9);
   const [number, setNumber] = useState(false);
   const [char, setChar] = useState(false);
+  const [copy, setCopy] = useState(false);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -30,15 +31,20 @@ export default function App() {
   const copyPass = useCallback(() => {
     const copy = navigator.clipboard.writeText(password);
    const select = passwordRef.current?.select();
+    setCopy(true)
+   setTimeout(()=> setCopy(false),1000)
 
-  if(copy){
-    alert("Password copied")
-  }
+
   }, [password]);
 
 
   return (
+    
+    <>
+     {copy && <div className="w-full bg-[#1D4ED8] flex justify-center items-center fixed top-0 text-white text-md font-semibold py-2">Password Copied Successfully</div>}
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md md:mt-[100px] ">
+      
+       
       <h2 className="text-2xl font-bold mb-4 text-gray-800">
         Generate your Password
       </h2>
@@ -146,5 +152,6 @@ export default function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
