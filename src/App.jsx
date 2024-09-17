@@ -7,6 +7,7 @@ export default function App() {
   const [number, setNumber] = useState(false);
   const [char, setChar] = useState(false);
   const [copy, setCopy] = useState(false);
+  const [empty, setempty] = useState(false);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -30,9 +31,15 @@ export default function App() {
   const passwordRef = useRef(null);
   const copyPass = useCallback(() => {
     const copy = navigator.clipboard.writeText(password);
-   const select = passwordRef.current?.select();
+if(password < length){
+   alert("Empty Password")
+}
+
+  else{
+    const select = passwordRef.current?.select();
     setCopy(true)
    setTimeout(()=> setCopy(false),1000)
+  }
 
 
   }, [password]);
