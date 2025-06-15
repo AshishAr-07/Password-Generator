@@ -38,7 +38,7 @@ JavaScript (ES6+) – Modern JavaScript features
 🧪 Getting Started
 Installation
 Clone the repository:
-git clone https://github.com/your-username/password-generator.git
+git clone https://github.com/AshishAr-07/Password-Generator.git
 cd password-generator
 
 Install dependencies:
